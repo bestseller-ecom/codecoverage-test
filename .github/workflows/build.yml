@@ -22,13 +22,15 @@ jobs:
       uses: gradle/gradle-build-action@v2
     - name: Run build with Gradle Wrapper
       run: ./gradlew build
-    - uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        directory: ./build/reports/jacoco/
-        name: codecov-test
-        verbose: true # optional (default = false)
-    # - name: Coveralls
-    #   uses: coverallsapp/github-action@master
+    - name: Run Jacoco Coveralls
+      run: ./gradlew jacocoTestReport coveralls
+    # - uses: codecov/codecov-action@v3
     #   with:
-    #     github-token: ${{ secrets.COVERALLS }}
+    #     token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+    #     directory: ./build/reports/jacoco/
+    #     name: codecov-test
+    #     verbose: true # optional (default = false)
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.COVERALLS }}

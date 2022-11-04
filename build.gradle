@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'jacoco'
 	id 'java'
+	id 'com.github.kt3k.coveralls' version '2.12.0'
 }
 
 apply plugin: "jacoco"
@@ -72,6 +73,10 @@ jacocoTestCoverageVerification {
 			}
 		}
 	}
+}
+
+coveralls {
+    jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
 }
 
 tasks.named('test') {
