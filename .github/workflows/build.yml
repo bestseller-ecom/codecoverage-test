@@ -25,7 +25,7 @@ jobs:
     - uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        directory: ./build/reports/jacoco/
+        #directory: ./build/reports/jacoco/
         name: codecov-test
         verbose: true # optional (default = false)
     # - name: Coveralls
