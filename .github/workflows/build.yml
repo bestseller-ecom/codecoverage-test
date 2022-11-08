@@ -45,14 +45,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: ./gradlew build sonarqube #--info
-      #run: ./gradlew sonarqube --no-daemon -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=bestseller-ecom_codecoverage-test -Dsonar.organization=bestseller-ecom
-    # - uses: codecov/codecov-action@v3
-    #   with:
-    #     token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-    #     directory: ./build/reports/jacoco/
-    #     name: codecov-test
-    #     verbose: true # optional (default = false)
-    # - name: Coveralls
-    #   uses: coverallsapp/github-action@master
-    #   with:
-    #     github-token: ${{ secrets.COVERALLS }}
