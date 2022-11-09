@@ -25,3 +25,16 @@ jobs:
 
     - name: Run build with Gradle Wrapper
       run: ./gradlew build
+
+    - name: Deploy coverage
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/reports/jacoco/test/html
+
+    - name: PR comment with reactions
+      uses: thollander/actions-comment-pull-request@v1
+      with:
+        message: |
+          Check the coverage of you code at: https://bestseller-ecom.github.io/codecoverage-test/ :wave:
+        reactions: eyes, rocket
